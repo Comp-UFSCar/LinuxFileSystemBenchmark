@@ -12,8 +12,9 @@
 #include "Benchmark.h"
 
 //The number Bytes to write (2^SIZE)
-//TO DO is 16 here
 #define SIZE 16
+//The number Bytes to write in each req (2^REQSIZE)
+#define REQSIZE 16
 //Useful constants
 #define _64KB 65536
 
@@ -55,7 +56,7 @@ int main(void){
 	int n = 0;
 	int totalSize = (int)powf(2.0,SIZE);
 	char *Buffer;
-	while(n<SIZE){
+	while(n<REQSIZE){
 		int chunkSize = (int)powf(2.0,n);
 		int times = totalSize/chunkSize;
 
