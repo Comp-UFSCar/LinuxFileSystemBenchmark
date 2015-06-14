@@ -54,16 +54,26 @@ int main(void){
 
 	//Write all chunks
 	int n = 0;
+	//Calculate total size to write
 	int totalSize = (int)powf(2.0,SIZE);
+	//The buffer to use for writing
 	char *Buffer;
+	//Use N to write chuks and increase by req size
 	while(n<REQSIZE){
+		//Calculate the size of the current chunk
 		int chunkSize = (int)powf(2.0,n);
+		//Calculate how many times the chunk needs to be written to fill the total size
 		int times = totalSize/chunkSize;
 
+		//Debug
 		printf("SW of %d bytes %d times. (%d bytes)\n",chunkSize, times, totalSize);
+		//Build the buffer
 		Buffer = makeChunkBuffer(chunkSize);
 
+		//Benchmark the start time
 		float startTime = getTime();
+
+		//Write each chunk to the file using write syscall
 		int i = 0;
 		for(i=0;i<times;i++){
 			if(write(file, &Buffer, chunkSize) < 0){
@@ -72,18 +82,26 @@ int main(void){
 				return -1; //Failed to write
 			}
 		}
+
+		//Benchmark end time
 		float endTime = getTime();
 		float timeElapsed = endTime - startTime;
+
+		//Debug
 		printf("Sequential write time: %f s\n", timeElapsed);
+
+		//Free current chunk buffer (we will get a bigger on of no one)
 		free(Buffer);
+		//Rewind the file
 		lseek(file,0, SEEK_SET);
+		//Increase chunk size
 		n++;
 	}
 
 	//End
 	puts("Ended.");
 
-	//Close the file 'handle'
+	//Close the file
 	close(file);
 
 	//return correctly
