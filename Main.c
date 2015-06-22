@@ -12,10 +12,10 @@
 #include <math.h>
 #include "Benchmark.h"
 
-//The number Bytes to write (2^SIZE)
-#define SIZE 16
-//The max number Bytes to write in each req (2^REQSIZE)
-//A req tests writing from 2^0 to 2^REQSIZE
+//The number Bytes to write/read (2^SIZE)
+#define SIZE 24
+//The max number Bytes to write/read in each req (2^REQSIZE)
+//A req tests writing/reading from 2^0 to 2^REQSIZE
 //All tests test each case using reqsize
 #define REQSIZE 16
 //Useful constants
@@ -34,7 +34,7 @@ char* makeChunkBuffer(int chunkSize, int initialize) {
 		exit(-1);
 	}
 
-	if(initialize != 0){
+	if (initialize != 0) {
 		int i = 0;
 		for (i = 0; i < chunkSize; i++) {
 			BUFF[i] = '0';
@@ -81,7 +81,7 @@ int main(void) {
 		printf("SW of %d bytes %d times. (%d bytes)\n", chunkSize, times,
 				totalSize);
 		//Build the buffer
-		Buffer = makeChunkBuffer(chunkSize,1);
+		Buffer = makeChunkBuffer(chunkSize, 1);
 
 		//Benchmark the start time
 		float startTime = getTime();
@@ -137,7 +137,7 @@ int main(void) {
 		printf("RW of %d bytes %d times. (%d bytes)\n", chunkSize, times,
 				totalSize);
 		//Build the buffer
-		Buffer = makeChunkBuffer(chunkSize,1);
+		Buffer = makeChunkBuffer(chunkSize, 1);
 
 		//Benchmark the start time
 		float startTime = getTime();
@@ -149,7 +149,7 @@ int main(void) {
 			if (i <= times / 2) {
 				pos = i * chunkSize;
 			} else {
-				pos = totalSize - ((i - (times / 2)) * chunkSize);
+				pos = totalSize - ((i - (times / 2)) * chunkSize) - chunkSize;
 			}
 
 			//Go to position
@@ -221,7 +221,7 @@ int main(void) {
 			int count = 0;
 			do {
 				count = read(file, Buffer, chunkSize);
-			}while(count > 0);
+			} while (count > 0);
 		}
 
 		//Benchmark end time
@@ -230,14 +230,14 @@ int main(void) {
 
 		//Check buffer (should all be zeroes)
 		/*i = 0;
-		for (i = 0; i < chunkSize; i++) {
-			if (Buffer[i] != '0') {
-				puts("Buffer error. Non-zero returned on read.");
-				printf("Current chunk size: %d\n",chunkSize);
-				printf("Buffer: %s\n",Buffer);
-				break;
-			}
-		}*/
+		 for (i = 0; i < chunkSize; i++) {
+		 if (Buffer[i] != '0') {
+		 puts("Buffer error. Non-zero returned on read.");
+		 printf("Current chunk size: %d\n",chunkSize);
+		 printf("Buffer: %s\n",Buffer);
+		 break;
+		 }
+		 }*/
 
 		//Debug
 		printf("Sequential read time: %f s\n", timeElapsed);
@@ -285,7 +285,7 @@ int main(void) {
 			int count = 0;
 			do {
 				count = read(file, Buffer, chunkSize);
-			}while(count < chunkSize);
+			} while (count < chunkSize);
 		}
 
 		//Benchmark end time
@@ -337,7 +337,7 @@ int main(void) {
 			int count = 0;
 			do {
 				count = read(file, Buffer, chunkSize);
-			}while(count < chunkSize);
+			} while (count < chunkSize);
 		}
 
 		//Benchmark end time
@@ -346,6 +346,61 @@ int main(void) {
 
 		//Debug
 		printf("Reverse read time: %f s\n", timeElapsed);
+
+		//Free current chunk buffer (we will get a bigger one)
+		free(Buffer);
+		//Rewind the file
+		lseek(file, 0, SEEK_SET);
+		//Increase chunk size
+		n++;
+	}
+
+	puts("Fragmented read.");
+
+	////////////////////////////////////////////////
+	////           FRAGMENTED READ              ////
+	////////////////////////////////////////////////
+	//Reset n counter
+	n = 0;
+	//Use N to read chuks and increase by req size
+	while (n < REQSIZE) {
+		//Calculate the size of the current chunk
+		const int chunkSize = (int) powf(2.0, n);
+		//Calculate how many times the chunk needs to be read to fill the total size
+		const int times = totalSize / chunkSize;
+
+		//Debug
+		printf("FR of %d bytes %d times. (%d bytes)\n", chunkSize, times,
+				totalSize);
+		//Build the buffer
+		Buffer = makeChunkBuffer(chunkSize, 0);
+
+		//Benchmark the start time
+		float startTime = getTime();
+
+		//Read each chunk to the file using read syscall
+		int i = 0;
+		for (i = 0; i < times; i++) {
+			//Read one, skip one
+			if (i % 2) {
+				//Skip
+				int k = chunkSize;
+				lseek(file, k, SEEK_CUR);
+			} else {
+				//Read
+				int count = 0;
+				do {
+					count = read(file, Buffer, chunkSize);
+				} while (count < chunkSize);
+			}
+		}
+
+		//Benchmark end time
+		float endTime = getTime();
+		float timeElapsed = endTime - startTime;
+
+		//Debug
+		printf("Fragmented read time: %f s\n", timeElapsed);
 
 		//Free current chunk buffer (we will get a bigger one)
 		free(Buffer);
