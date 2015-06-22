@@ -1,0 +1,203 @@
+Started.
+File ready.
+SW of 1 bytes 16777216 times. (16777216 bytes)
+Sequential write time: 38.574841 s
+SW of 2 bytes 8388608 times. (16777216 bytes)
+Sequential write time: 11.607616 s
+SW of 4 bytes 4194304 times. (16777216 bytes)
+Sequential write time: 5.820835 s
+SW of 8 bytes 2097152 times. (16777216 bytes)
+Sequential write time: 2.921562 s
+SW of 16 bytes 1048576 times. (16777216 bytes)
+Sequential write time: 1.466164 s
+SW of 32 bytes 524288 times. (16777216 bytes)
+Sequential write time: 0.733532 s
+SW of 64 bytes 262144 times. (16777216 bytes)
+Sequential write time: 0.369850 s
+SW of 128 bytes 131072 times. (16777216 bytes)
+Sequential write time: 0.191467 s
+SW of 256 bytes 65536 times. (16777216 bytes)
+Sequential write time: 0.098614 s
+SW of 512 bytes 32768 times. (16777216 bytes)
+Sequential write time: 0.052494 s
+SW of 1024 bytes 16384 times. (16777216 bytes)
+Sequential write time: 0.029705 s
+SW of 2048 bytes 8192 times. (16777216 bytes)
+Sequential write time: 0.018215 s
+SW of 4096 bytes 4096 times. (16777216 bytes)
+Sequential write time: 0.013607 s
+SW of 8192 bytes 2048 times. (16777216 bytes)
+Sequential write time: 0.011967 s
+SW of 16384 bytes 1024 times. (16777216 bytes)
+Sequential write time: 0.010540 s
+SW of 32768 bytes 512 times. (16777216 bytes)
+Sequential write time: 0.011650 s
+Sequential write complete.
+Starting random write
+RW of 1 bytes 16777216 times. (16777216 bytes)
+Random write time: 28.739296 s
+RW of 2 bytes 8388608 times. (16777216 bytes)
+Random write time: 14.397156 s
+RW of 4 bytes 4194304 times. (16777216 bytes)
+Random write time: 7.198753 s
+RW of 8 bytes 2097152 times. (16777216 bytes)
+Random write time: 3.641357 s
+RW of 16 bytes 1048576 times. (16777216 bytes)
+Random write time: 1.845589 s
+RW of 32 bytes 524288 times. (16777216 bytes)
+Random write time: 0.939537 s
+RW of 64 bytes 262144 times. (16777216 bytes)
+Random write time: 0.480164 s
+RW of 128 bytes 131072 times. (16777216 bytes)
+Random write time: 0.247871 s
+RW of 256 bytes 65536 times. (16777216 bytes)
+Random write time: 0.130905 s
+RW of 512 bytes 32768 times. (16777216 bytes)
+Random write time: 0.071594 s
+RW of 1024 bytes 16384 times. (16777216 bytes)
+Random write time: 0.040756 s
+RW of 2048 bytes 8192 times. (16777216 bytes)
+Random write time: 0.026505 s
+RW of 4096 bytes 4096 times. (16777216 bytes)
+Random write time: 0.017464 s
+RW of 8192 bytes 2048 times. (16777216 bytes)
+Random write time: 0.013268 s
+RW of 16384 bytes 1024 times. (16777216 bytes)
+Random write time: 0.011902 s
+RW of 32768 bytes 512 times. (16777216 bytes)
+Random write time: 0.011131 s
+Ended write.
+Read start.
+SR of 1 bytes 16777216 times. (16777216 bytes)
+Sequential read time: 11.919357 s
+SR of 2 bytes 8388608 times. (16777216 bytes)
+Sequential read time: 5.972809 s
+SR of 4 bytes 4194304 times. (16777216 bytes)
+Sequential read time: 2.991806 s
+SR of 8 bytes 2097152 times. (16777216 bytes)
+Sequential read time: 1.500244 s
+SR of 16 bytes 1048576 times. (16777216 bytes)
+Sequential read time: 0.756699 s
+SR of 32 bytes 524288 times. (16777216 bytes)
+Sequential read time: 0.380310 s
+SR of 64 bytes 262144 times. (16777216 bytes)
+Sequential read time: 0.191513 s
+SR of 128 bytes 131072 times. (16777216 bytes)
+Sequential read time: 0.098984 s
+SR of 256 bytes 65536 times. (16777216 bytes)
+Sequential read time: 0.053177 s
+SR of 512 bytes 32768 times. (16777216 bytes)
+Sequential read time: 0.029037 s
+SR of 1024 bytes 16384 times. (16777216 bytes)
+Sequential read time: 0.016632 s
+SR of 2048 bytes 8192 times. (16777216 bytes)
+Sequential read time: 0.011002 s
+SR of 4096 bytes 4096 times. (16777216 bytes)
+Sequential read time: 0.008438 s
+SR of 8192 bytes 2048 times. (16777216 bytes)
+Sequential read time: 0.007462 s
+SR of 16384 bytes 1024 times. (16777216 bytes)
+Sequential read time: 0.006470 s
+SR of 32768 bytes 512 times. (16777216 bytes)
+Sequential read time: 0.006073 s
+Random read.
+RR of 1 bytes 16777216 times. (16777216 bytes)
+Random read time: 11.375366 s
+RR of 2 bytes 8388608 times. (16777216 bytes)
+Random read time: 5.734116 s
+RR of 4 bytes 4194304 times. (16777216 bytes)
+Random read time: 2.878220 s
+RR of 8 bytes 2097152 times. (16777216 bytes)
+Random read time: 1.457993 s
+RR of 16 bytes 1048576 times. (16777216 bytes)
+Random read time: 0.739990 s
+RR of 32 bytes 524288 times. (16777216 bytes)
+Random read time: 0.379684 s
+RR of 64 bytes 262144 times. (16777216 bytes)
+Random read time: 0.197693 s
+RR of 128 bytes 131072 times. (16777216 bytes)
+Random read time: 0.104919 s
+RR of 256 bytes 65536 times. (16777216 bytes)
+Random read time: 0.055817 s
+RR of 512 bytes 32768 times. (16777216 bytes)
+Random read time: 0.031845 s
+RR of 1024 bytes 16384 times. (16777216 bytes)
+Random read time: 0.019897 s
+RR of 2048 bytes 8192 times. (16777216 bytes)
+Random read time: 0.013229 s
+RR of 4096 bytes 4096 times. (16777216 bytes)
+Random read time: 0.011154 s
+RR of 8192 bytes 2048 times. (16777216 bytes)
+Random read time: 0.009262 s
+RR of 16384 bytes 1024 times. (16777216 bytes)
+Random read time: 0.007111 s
+RR of 32768 bytes 512 times. (16777216 bytes)
+Random read time: 0.007065 s
+Reverse read.
+RevR of 1 bytes 16777216 times. (16777216 bytes)
+Reverse read time: 8.662537 s
+RevR of 2 bytes 8388608 times. (16777216 bytes)
+Reverse read time: 4.294983 s
+RevR of 4 bytes 4194304 times. (16777216 bytes)
+Reverse read time: 2.145844 s
+RevR of 8 bytes 2097152 times. (16777216 bytes)
+Reverse read time: 1.080414 s
+RevR of 16 bytes 1048576 times. (16777216 bytes)
+Reverse read time: 0.543793 s
+RevR of 32 bytes 524288 times. (16777216 bytes)
+Reverse read time: 0.273468 s
+RevR of 64 bytes 262144 times. (16777216 bytes)
+Reverse read time: 0.139008 s
+RevR of 128 bytes 131072 times. (16777216 bytes)
+Reverse read time: 0.076675 s
+RevR of 256 bytes 65536 times. (16777216 bytes)
+Reverse read time: 0.043274 s
+RevR of 512 bytes 32768 times. (16777216 bytes)
+Reverse read time: 0.024567 s
+RevR of 1024 bytes 16384 times. (16777216 bytes)
+Reverse read time: 0.015976 s
+RevR of 2048 bytes 8192 times. (16777216 bytes)
+Reverse read time: 0.010300 s
+RevR of 4096 bytes 4096 times. (16777216 bytes)
+Reverse read time: 0.009598 s
+RevR of 8192 bytes 2048 times. (16777216 bytes)
+Reverse read time: 0.007477 s
+RevR of 16384 bytes 1024 times. (16777216 bytes)
+Reverse read time: 0.006241 s
+RevR of 32768 bytes 512 times. (16777216 bytes)
+Reverse read time: 0.007462 s
+Fragmented read.
+FR of 1 bytes 16777216 times. (16777216 bytes)
+Fragmented read time: 4.445663 s
+FR of 2 bytes 8388608 times. (16777216 bytes)
+Fragmented read time: 2.226105 s
+FR of 4 bytes 4194304 times. (16777216 bytes)
+Fragmented read time: 1.114868 s
+FR of 8 bytes 2097152 times. (16777216 bytes)
+Fragmented read time: 0.573135 s
+FR of 16 bytes 1048576 times. (16777216 bytes)
+Fragmented read time: 0.290543 s
+FR of 32 bytes 524288 times. (16777216 bytes)
+Fragmented read time: 0.147537 s
+FR of 64 bytes 262144 times. (16777216 bytes)
+Fragmented read time: 0.079178 s
+FR of 128 bytes 131072 times. (16777216 bytes)
+Fragmented read time: 0.041702 s
+FR of 256 bytes 65536 times. (16777216 bytes)
+Fragmented read time: 0.022446 s
+FR of 512 bytes 32768 times. (16777216 bytes)
+Fragmented read time: 0.013489 s
+FR of 1024 bytes 16384 times. (16777216 bytes)
+Fragmented read time: 0.008682 s
+FR of 2048 bytes 8192 times. (16777216 bytes)
+Fragmented read time: 0.005127 s
+FR of 4096 bytes 4096 times. (16777216 bytes)
+Fragmented read time: 0.004135 s
+FR of 8192 bytes 2048 times. (16777216 bytes)
+Fragmented read time: 0.004593 s
+FR of 16384 bytes 1024 times. (16777216 bytes)
+Fragmented read time: 0.003922 s
+FR of 32768 bytes 512 times. (16777216 bytes)
+Fragmented read time: 0.002960 s
+Ended read.
+
