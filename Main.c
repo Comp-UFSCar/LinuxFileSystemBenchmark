@@ -250,6 +250,8 @@ int main(void) {
 		n++;
 	}
 
+	puts("Random read.");
+
 	////////////////////////////////////////////////
 	////              RANDOM READ               ////
 	////////////////////////////////////////////////
@@ -274,15 +276,16 @@ int main(void) {
 		//Read each chunk to the file using read syscall
 		int i = 0;
 		for (i = 0; i < times; i++) {
-			/*
-			 *  On files that support seeking, the read operation commences at the
-			 *	current file offset, and the file offset is incremented by the number
-			 * 	of bytes read. (read man)
-			 */
+			//Select a place to read
+			//from [0 to (totalSize - chunkSize)[
+			int pos = rand() % (totalSize - chunkSize);
+			//Go there
+			lseek(file, pos, SEEK_SET);
+
 			int count = 0;
 			do {
 				count = read(file, Buffer, chunkSize);
-			}while(count > 0);
+			}while(count < chunkSize);
 		}
 
 		//Benchmark end time
@@ -291,6 +294,58 @@ int main(void) {
 
 		//Debug
 		printf("Random read time: %f s\n", timeElapsed);
+
+		//Free current chunk buffer (we will get a bigger one)
+		free(Buffer);
+		//Rewind the file
+		lseek(file, 0, SEEK_SET);
+		//Increase chunk size
+		n++;
+	}
+
+	puts("Reverse read.");
+
+	////////////////////////////////////////////////
+	////             REVERSE READ               ////
+	////////////////////////////////////////////////
+	//Reset n counter
+	n = 0;
+	//Use N to read chuks and increase by req size
+	while (n < REQSIZE) {
+		//Calculate the size of the current chunk
+		const int chunkSize = (int) powf(2.0, n);
+		//Calculate how many times the chunk needs to be read to fill the total size
+		const int times = totalSize / chunkSize;
+
+		//Debug
+		printf("RevR of %d bytes %d times. (%d bytes)\n", chunkSize, times,
+				totalSize);
+		//Build the buffer
+		Buffer = makeChunkBuffer(chunkSize, 0);
+
+		//Benchmark the start time
+		float startTime = getTime();
+
+		//Read each chunk to the file using read syscall
+		int i = 0;
+		for (i = 0; i < times; i++) {
+			//Select a place to read
+			int pos = totalSize - (i * chunkSize) - chunkSize;
+			//Go there
+			lseek(file, pos, SEEK_SET);
+
+			int count = 0;
+			do {
+				count = read(file, Buffer, chunkSize);
+			}while(count < chunkSize);
+		}
+
+		//Benchmark end time
+		float endTime = getTime();
+		float timeElapsed = endTime - startTime;
+
+		//Debug
+		printf("Reverse read time: %f s\n", timeElapsed);
 
 		//Free current chunk buffer (we will get a bigger one)
 		free(Buffer);
