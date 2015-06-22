@@ -89,7 +89,7 @@ int main(void) {
 		//Write each chunk to the file using write syscall
 		int i = 0;
 		for (i = 0; i < times; i++) {
-			if (write(file, &Buffer, chunkSize) < 0) {
+			if (write(file, Buffer, chunkSize) < 0) {
 				puts("Write error.");
 				perror("write");
 				return -1; //Failed to write
@@ -145,17 +145,13 @@ int main(void) {
 		//Write each chunk to the file using write syscall
 		int i = 0;
 		for (i = 0; i < times; i++) {
-			//Calculate position
-			if (i <= times / 2) {
-				pos = i * chunkSize;
-			} else {
-				pos = totalSize - ((i - (times / 2)) * chunkSize) - chunkSize;
-			}
-
-			//Go to position
+			//Select a place to read
+			//from [0 to (totalSize - chunkSize)[
+			int pos = rand() % (totalSize - chunkSize);
+			//Go there
 			lseek(file, pos, SEEK_SET);
 
-			if (write(file, &Buffer, chunkSize) < 0) {
+			if (write(file, Buffer, chunkSize) < 0) {
 				puts("Write error.");
 				perror("write");
 				return -1; //Failed to write
